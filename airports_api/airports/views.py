@@ -7,7 +7,7 @@ from .utility import *
 #The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1G5darnYfuJvfPvaGZR9Y3cItm3wMbCQQ5DpZDkB7GQ0'
 SAMPLE_RANGE_NAME = 'Hoja 1!A:L'
-API_KEY = "AIzaSyBybqFh9zI9-pdBSY4vUFhTbcjcIL6XAww"
+API_KEY = "private_key"
 
 # Create your views here.
 def index(request):
