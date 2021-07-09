@@ -1,0 +1,122 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Airports API</title>
+  </head>
+  <body>
+    <div class="container-fluid bg-light p-3 rounded shadow-sm" style="margin-top:2%; margin-bottom:2%">
+      <h1 class="text-center">Airports API</h1>
+      <h4 class="text-center">Toda la información de los aeropuertos en una API</h4>
+    </div>
+    
+    <div class="container-fluid" style="margin-top:2%">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Consulta</th>
+            <th scope="col">URL</th>
+            <th scope="col">Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Todos</th>
+            <td> <a href="{% url 'allairports' %}">localhost:8000/airports/all/</a> </td>
+            <td>Obtener todos los aeropuertos.</td>
+          </tr>
+          <tr>
+            <th scope="row">Por país</th>
+            <td> 
+              <a>localhost:8000/country/{pais}</a><br>
+              <a href="{% url 'airportsbycountry' countryName='mexico' %}">localhost:8000/airports/country/mexico</a>
+            </td>
+            <td>Obtener todos los aeropuertos dentro de un determinado país.</td>
+          </tr>
+          <tr>
+            <th scope="row">Por nombre</th>
+            <td> 
+              <a>localhost:8000/name/{nombre}</a><br>
+              <a href="{% url 'airportsbyname' airportName='benito' %}">localhost:8000/airports/name/benito</a> 
+            </td>
+            <td>Permite buscar aeropuertos por nombre.</td>
+          </tr>
+          <tr>
+            <th scope="row">Por código IATA</th>
+            <td> 
+              <a>localhost:8000/iata/{codigo_iata}</a><br>
+              <a href="{% url 'airportbyiata' iataCode='MEN' %}">localhost:8000/airports/iata/MEN</a> 
+            </td>
+            <td>Permite localizar un aeropuerto mediante su código IATA.</td>
+          </tr>
+          <tr>
+            <th scope="row">Por código ICAO</th>
+            <td> 
+              <a>localhost:8000/icao/{codigo_icao}</a><br>
+              <a href="{% url 'aiportbyicao' icaoCode='MMQT' %}">localhost:8000/airports/icao/MMQT</a> 
+            </td>
+            <td>Permite localizar un aeropuerto mediante su código ICAO.</td>
+          </tr>
+          <tr>
+            <th scope="row">Por continente o estado</th>
+            <td> 
+              <a>localhost:8000/continentState/{continent_state}</a><br>
+              <a href="{% url 'airportsbycontinentstate' continentState='america' %}">localhost:8000/airports/continentState/america</a><br>
+              <a href="{% url 'airportsbycontinentstate' continentState='Paris' %}">localhost:8000/airports/continentState/Paris</a> 
+            </td>
+            <td>Obtener todos los aeropuertos en un continente o estado.</td>
+          </tr>
+          <tr>
+            <th scope="row">Por zona horaria UTC</th>
+            <td> 
+              <a>localhost:8000/utc/{zona_horaria_utc}</a><br>
+              <a href="{% url 'airportsbyutc' utcTimeZone='-6' %}">localhost:8000/airports/utc/-6</a><br>
+              <a href="{% url 'airportsbyutc' utcTimeZone='1' %}">localhost:8000/airports/utc/1</a> 
+            </td>
+            <td>Obtener todos los aeropuertos en una zona horaria UTC.</td>
+          </tr>
+          <tr>
+            <th scope="row">Por horario de verano</th>
+            <td> 
+              <a>localhost:8000/dst/{dst}</a><br>
+              <a href="{% url 'airportsbydst' dst='S' %}">localhost:8000/airports/dst/S</a><br>
+              <a href="{% url 'airportsbydst' dst='N' %}">localhost:8000/airports/dst/N</a> 
+            </td>
+            <td>Obtener todos los aeropuertos según su horario de verano.</td>
+          </tr>
+          <tr>
+            <th scope="row">**Extra: Nombres nativos de países con aeropuertos en Asia</th>
+            <td> 
+              <a href="{% url 'countriesairportsasia' %}">localhost:8000/countries/asia</a> 
+            </td>
+            <td>Obtener los nombres nativos de los países con aeropuertos en Asia.</td>
+          </tr>
+          <tr>
+            <th scope="row">**Extra: Nombre nativo de país con aeropuerto en Asia</th>
+            <td> 
+              <a>localhost:8000/countries/asia/{country_name}</a><br>
+              <a href="{% url 'asiancountrynativename' asianCountry='japan' %}">localhost:8000/countries/asia/japan</a> 
+            </td>
+            <td>Obtener el nombre nativo de un país en particular con aeropuerto en Asia.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
